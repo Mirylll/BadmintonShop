@@ -7,7 +7,7 @@ import backpacksImg from '@/assets/images/categories/backpacks.jpg'
 import accessoriesImg from '@/assets/images/categories/accessories.jpg'
 import bagsImg from '@/assets/images/categories/bags.jpg'
 
-export default function HeroCategories() {
+export default function Hero() {
   return (
     <section className="bg-white pt-5 lg:pt-6">
       <div className="relative flex w-full h-[500px] overflow-hidden">
