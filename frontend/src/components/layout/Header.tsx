@@ -1,15 +1,16 @@
 import { useState } from 'react'
 
 const navLinks = [
-  'New Feature',
-  'Rackets',
-  'Shoes',
-  'Shirts',
-  'Shorts',
-  'Skirts',
-  'Bags',
-  'Backpacks',
-  'Accessories',
+  { label: 'New Feature', path: '/new-feature' },
+  { label: 'Rackets', path: '/rackets' },
+  { label: 'Shoes', path: '/shoes' },
+  { label: 'Shirts', path: '/shirts' },
+  { label: 'Shorts', path: '/shorts' },
+  { label: 'Skirts', path: '/skirts' },
+  { label: 'Bags', path: '/bags' },
+  { label: 'Backpacks', path: '/backpacks' },
+  { label: 'Accessories', path: '/accessories' },
+  { label: 'About Us', path: '/about-us' },
 ]
 
 
@@ -86,11 +87,11 @@ export default function Header() {
         <div className="hidden nav:flex items-center justify-center gap-5 xl:gap-6 flex-1 mx-6">
           {navLinks.map((link) => (
             <a
-              key={link}
-              href="#"
+              key={link.label}
+              href={link.path}
               className="text-[16px] font-body-medium text-text-primary whitespace-nowrap hover:text-text-secondary transition-colors"
             >
-              {link}
+              {link.label}
             </a>
           ))}
         </div>
@@ -145,12 +146,12 @@ export default function Header() {
           <div className="flex flex-col items-center justify-center flex-1 gap-8 px-4">
             {navLinks.map((link) => (
               <a
-                key={link}
-                href="#"
+                key={link.label}
+                href={link.path}
                 className="text-[24px] font-heading text-text-primary hover:text-text-secondary transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {link}
+                {link.label}
               </a>
             ))}
           </div>

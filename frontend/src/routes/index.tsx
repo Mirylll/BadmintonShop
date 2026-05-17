@@ -8,6 +8,8 @@ import Cart from '@/pages/cart/Cart'
 import Checkout from '@/pages/checkout/Checkout'
 import Login from '@/pages/auth/Login'
 import Register from '@/pages/auth/Register'
+import CategoryPage from '@/pages/category/CategoryPage'
+import About from '@/pages/about/About'
 import Dashboard from '@/pages/admin/Dashboard'
 import ProductList from '@/pages/admin/products/ProductList'
 import ProductForm from '@/pages/admin/products/ProductForm'
@@ -30,6 +32,16 @@ export default function AppRoutes() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/new-feature" element={<CategoryPage category="new-feature" />} />
+        <Route path="/rackets" element={<CategoryPage category="rackets" />} />
+        <Route path="/shoes" element={<CategoryPage category="shoes" />} />
+        <Route path="/shirts" element={<CategoryPage category="shirts" />} />
+        <Route path="/shorts" element={<CategoryPage category="shorts" />} />
+        <Route path="/skirts" element={<CategoryPage category="skirts" />} />
+        <Route path="/bags" element={<CategoryPage category="bags" />} />
+        <Route path="/backpacks" element={<CategoryPage category="backpacks" />} />
+        <Route path="/accessories" element={<CategoryPage category="accessories" />} />
+        <Route path="/about-us" element={<About />} />
       </Route>
 
       {/* Admin routes */}
