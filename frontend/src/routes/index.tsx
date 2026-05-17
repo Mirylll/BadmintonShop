@@ -21,6 +21,10 @@ import CategoryList from '@/pages/admin/categories/CategoryList'
 import CategoryForm from '@/pages/admin/categories/CategoryForm'
 import UserList from '@/pages/admin/users/UserList'
 import AIConfig from '@/pages/admin/chat/AIConfig'
+import Customers from '@/pages/admin/customers/Customers'
+import Promotions from '@/pages/admin/promotions/Promotions'
+import Banners from '@/pages/admin/banners/Banners'
+import Settings from '@/pages/admin/settings/Settings'
 
 export default function AppRoutes() {
   return (
@@ -61,6 +65,10 @@ export default function AppRoutes() {
         <Route path="categories/:id/edit" element={<CategoryForm />} />
         <Route path="users" element={<UserList />} />
         <Route path="chat" element={<AIConfig />} />
+        <Route path="customers" element={<Customers />} />
+        <Route path="promotions" element={<Promotions />} />
+        <Route path="banners" element={<Banners />} />
+        <Route path="settings" element={<Settings />} />
       </Route>
     </Routes>
   )

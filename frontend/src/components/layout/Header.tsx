@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '@/contexts/AuthContext'
 
 const navLinks = [
   { label: 'Rackets', path: '/rackets' },
@@ -10,7 +12,6 @@ const navLinks = [
   { label: 'Backpacks', path: '/backpacks' },
   { label: 'Accessories', path: '/accessories' },
 ]
-
 
 function SearchIcon() {
   return (
@@ -60,14 +61,36 @@ function CloseIcon() {
 }
 
 export default function Header() {
+  const { user, isAuthenticated, logout } = useAuth()
+  const navigate = useNavigate()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  function handleLogout() {
+    logout()
+    setDropdownOpen(false)
+    navigate('/')
+  }
+
+  const initial = user?.full_name?.charAt(0)?.toUpperCase() || 'U'
 
   return (
     <header className="sticky top-0 z-50 bg-white">
       {/* Promo banner */}
       <div className="bg-nike-black py-[3px] text-center">
         <p className="text-[12px] font-body-medium text-white leading-[1.50]">
-          Free shipping on orders over $50
+          Providing quality products — your most trusted badminton shop
         </p>
       </div>
 
@@ -114,9 +137,55 @@ export default function Header() {
           </button>
 
           {/* User */}
-          <button className="p-[6px] rounded-full hover:bg-light-gray transition-colors" aria-label="Account">
-            <UserIcon />
-          </button>
+          <div className="relative" ref={dropdownRef}>
+            {isAuthenticated ? (
+              <>
+                <button
+                  className="w-[34px] h-[34px] rounded-full bg-light-gray flex items-center justify-center text-[14px] font-body-medium text-text-primary hover:bg-hover-gray transition-colors"
+                  onClick={() => setDropdownOpen((prev) => !prev)}
+                  aria-label="Account menu"
+                >
+                  {initial}
+                </button>
+                {dropdownOpen && (
+                  <div className="absolute right-0 mt-2 w-[200px] bg-white border border-border-secondary rounded-[8px] shadow-sm py-2">
+                    <div className="px-4 py-2 border-b border-border-secondary">
+                      <p className="text-[14px] font-body-medium text-text-primary truncate">{user?.full_name}</p>
+                      <p className="text-[12px] font-body text-text-secondary truncate">{user?.email}</p>
+                    </div>
+                    <Link
+                      to="/account"
+                      className="block px-4 py-2 text-[14px] font-body-medium text-text-primary hover:bg-light-gray transition-colors"
+                      onClick={() => setDropdownOpen(false)}
+                    >
+                      My Account
+                    </Link>
+                    <Link
+                      to="/orders"
+                      className="block px-4 py-2 text-[14px] font-body-medium text-text-primary hover:bg-light-gray transition-colors"
+                      onClick={() => setDropdownOpen(false)}
+                    >
+                      Orders
+                    </Link>
+                    <button
+                      className="w-full text-left px-4 py-2 text-[14px] font-body-medium text-text-primary hover:bg-light-gray transition-colors"
+                      onClick={handleLogout}
+                    >
+                      Sign Out
+                    </button>
+                  </div>
+                )}
+              </>
+            ) : (
+              <Link
+                to="/login"
+                className="p-[6px] rounded-full hover:bg-light-gray transition-colors inline-flex"
+                aria-label="Sign in"
+              >
+                <UserIcon />
+              </Link>
+            )}
+          </div>
 
           {/* Hamburger */}
           <button

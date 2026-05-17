@@ -1,4 +1,5 @@
 import { Navigate } from 'react-router-dom'
+import { useAuth } from '@/contexts/AuthContext'
 
 interface ProtectedRouteProps {
   children: React.ReactNode
@@ -6,15 +7,15 @@ interface ProtectedRouteProps {
 }
 
 export default function ProtectedRoute({ children, requiredRole }: ProtectedRouteProps) {
-  // TODO: Replace with actual auth check
-  const isAuthenticated = false
-  const userRole: string = 'user'
+  const { isAuthenticated, user, loading } = useAuth()
+
+  if (loading) return null
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />
   }
 
-  if (requiredRole === 'admin' && userRole !== 'admin') {
+  if (requiredRole === 'admin' && user?.role !== 'admin') {
     return <Navigate to="/" replace />
   }
 
