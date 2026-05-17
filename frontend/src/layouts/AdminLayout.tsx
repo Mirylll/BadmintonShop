@@ -6,7 +6,7 @@ export default function AdminLayout() {
   return (
     <div className="flex h-screen bg-snow">
       <AdminSidebar />
-      <div className="flex flex-1 flex-col overflow-hidden">
+      <div className="flex flex-1 flex-col overflow-hidden ml-[260px]">
         <AdminTopbar />
         <main className="flex-1 overflow-y-auto p-6">
           <Outlet />
