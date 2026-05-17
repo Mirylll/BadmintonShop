@@ -10,6 +10,8 @@ import Login from '@/pages/auth/Login'
 import Register from '@/pages/auth/Register'
 import CategoryPage from '@/pages/category/CategoryPage'
 import About from '@/pages/about/About'
+import Contact from '@/pages/contact/Contact'
+import ShippingInfo from '@/pages/shipping-info/ShippingInfo'
 import Dashboard from '@/pages/admin/Dashboard'
 import ProductList from '@/pages/admin/products/ProductList'
 import ProductForm from '@/pages/admin/products/ProductForm'
@@ -42,6 +44,8 @@ export default function AppRoutes() {
         <Route path="/backpacks" element={<CategoryPage category="backpacks" />} />
         <Route path="/accessories" element={<CategoryPage category="accessories" />} />
         <Route path="/about-us" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/shipping-info" element={<ShippingInfo />} />
       </Route>
 
       {/* Admin routes */}

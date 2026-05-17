@@ -94,17 +94,17 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-[14px] font-body-medium text-text-secondary leading-[1.86] hover:text-text-primary transition-colors">
+                <a href="/about-us" className="text-[14px] font-body-medium text-text-secondary leading-[1.86] hover:text-text-primary transition-colors">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#" className="text-[14px] font-body-medium text-text-secondary leading-[1.86] hover:text-text-primary transition-colors">
+                <a href="/contact" className="text-[14px] font-body-medium text-text-secondary leading-[1.86] hover:text-text-primary transition-colors">
                   Contact
                 </a>
               </li>
               <li>
-                <a href="#" className="text-[14px] font-body-medium text-text-secondary leading-[1.86] hover:text-text-primary transition-colors">
+                <a href="/shipping-info" className="text-[14px] font-body-medium text-text-secondary leading-[1.86] hover:text-text-primary transition-colors">
                   Shipping Info
                 </a>
               </li>
