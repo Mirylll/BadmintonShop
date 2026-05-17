@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 
 const categoryNames: Record<string, string> = {
-  'new-feature': 'New Feature',
   rackets: 'Rackets',
   shoes: 'Shoes',
   shirts: 'Shirts',

@@ -34,7 +34,6 @@ export default function AppRoutes() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/new-feature" element={<CategoryPage category="new-feature" />} />
         <Route path="/rackets" element={<CategoryPage category="rackets" />} />
         <Route path="/shoes" element={<CategoryPage category="shoes" />} />
         <Route path="/shirts" element={<CategoryPage category="shirts" />} />

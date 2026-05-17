@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
 const navLinks = [
-  { label: 'New Feature', path: '/new-feature' },
   { label: 'Rackets', path: '/rackets' },
   { label: 'Shoes', path: '/shoes' },
   { label: 'Shirts', path: '/shirts' },
